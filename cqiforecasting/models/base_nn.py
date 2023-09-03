@@ -3,7 +3,7 @@
 from abc import ABC, abstractmethod
 from cqiforecasting.utils.config import Config
 
-class BaseModel(ABC):
+class BaseNN(ABC):
     """Abstract Model class that is inherited to all models"""
 
     def __init__(self, cfg):
@@ -16,6 +16,10 @@ class BaseModel(ABC):
     @abstractmethod
     def build(self):
         pass
+    
+    @abstractmethod
+    def compile(self):
+        pass
 
     @abstractmethod
     def train(self):
@@ -25,6 +29,4 @@ class BaseModel(ABC):
     def evaluate(self):
         pass
 
-    @abstractmethod
-    def evaluate_document(self):
-        pass
+    
