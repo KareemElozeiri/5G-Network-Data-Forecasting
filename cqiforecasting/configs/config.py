@@ -3,13 +3,17 @@ Paths are always relative to the location of the command line,
 paths are not relative to any objects in the source codes.
 If you are not running scripts from the root folder (e.g., using cd instead), 
 then the paths here need to be checked and modified accordingly"""
-
+import os
 
 # "./" = root folder of the project
+current_dir = os.path.dirname(os.path.abspath(__file__))
+data_dir = os.path.join(current_dir, '../../data/')
 CFGLog = {
     "data": {
-        "path": "./data/ue-lte-network-traffic-stats.csv",
-
+        "path": os.path.join(data_dir,"ue-lte-network-traffic-stats.csv"),
+        "train_size":0.7,
+        "validation_size":0.15,
+        "test_size":0.15,
     },
     "train": {
             
