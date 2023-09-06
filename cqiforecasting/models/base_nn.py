@@ -9,7 +9,7 @@ class BaseNN(ABC):
 
     def __init__(self, cfg):
         self._model = None 
-        self._eval = None 
+        self.eval = None 
         self.config = Config.from_json(cfg)
         self.data_loader = NNDataLoader(self.config["data"])
 
@@ -31,8 +31,8 @@ class BaseNN(ABC):
         return history
     
     def evaluate(self):
-        self._eval = self._model.evaluate(self.X_test, self.y_test)
+        self.eval = self._model.evaluate(self.X_test, self.y_test)
 
-        return self._eval        
+        return self.eval        
 
     

@@ -8,6 +8,7 @@ import os
 # "./" = root folder of the project
 current_dir = os.path.dirname(os.path.abspath(__file__))
 data_dir = os.path.join(current_dir, '../../data/')
+export_dir  = os.path.join(current_dir, '../exported_models')
 CFGLog = {
     "data": {
         "path": os.path.join(data_dir,"ue-lte-network-traffic-stats.csv"),
@@ -19,6 +20,7 @@ CFGLog = {
             
     },
     "output": {
-        "output_path": "./exported_models/",
+        "models_output_path": os.path.join(export_dir, "/models/"),
+        "reports_output_path": os.path.join(export_dir, "/reports/")
     }
 }

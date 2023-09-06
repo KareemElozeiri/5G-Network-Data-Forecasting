@@ -7,9 +7,11 @@ from keras.optimizers import Adam
 
 class BiLSTMModel(BaseNN):
 
-    def __init__(self, input_seq_length, cfg, n_features=1):
+    def __init__(self, input_seq_length, cfg, n_features=1, name="BiLSTM"):
         super().__init__(cfg)
         
+        self.name = name
+
         self._description = "Double layer LSTM neural net"
 
         self._seq_length = input_seq_length
