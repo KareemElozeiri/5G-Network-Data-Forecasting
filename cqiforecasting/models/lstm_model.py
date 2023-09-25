@@ -6,15 +6,12 @@ from keras.optimizers import Adam
 
 class LSTMModel(BaseNN):
 
-    def __init__(self, input_seq_length, cfg, n_features=1, name="LSTM"):
-        super().__init__(cfg)
+    def __init__(self, input_seq_length, cfg, n_features=1,name="LSTM"):
+        super().__init__(input_seq_length, cfg, n_features)
         
         self.name = name
 
         self._description = "Double layer LSTM neural net"
-
-        self._seq_length = input_seq_length
-        self._n_features = n_features
         
         self._LSTM1_units = 50
         self._LSTM2_units = 50
