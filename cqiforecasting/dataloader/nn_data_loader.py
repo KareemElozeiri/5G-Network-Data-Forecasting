@@ -1,5 +1,6 @@
 import numpy as np 
 import pandas as pd
+from sklearn.preprocessing import MinMaxScaler
 
 
 class DataLoader:
@@ -14,7 +15,6 @@ class DataLoader:
 class SequenceSplitter:
     def split_sequences(self, df, seq_length):
         X, y = [], []
-        print(df)
         for i in range(len(df) - seq_length):
             X.append(df[i:i+seq_length])
             y.append(df[i+seq_length])
@@ -46,13 +46,16 @@ class NNDataLoader:
         self._data_loader = DataLoader(data_config)
         self._sequence_splitter = SequenceSplitter()
         self._data_preprocessor = DataPreprocessor(data_config)
+        self._scaler = MinMaxScaler()
     
     def reshape_feature_vector(self, n_features, feat_vect):
         return feat_vect.reshape((feat_vect.shape[0], feat_vect.shape[1], n_features))
 
-    def load_sequences(self, seq_length, n_features):
+    def load_sequences(self, seq_length, n_features, scale=True):
         df = self._data_loader.load_data()
         train_data, val_data, test_data = self._data_preprocessor.preprocess_data(df, seq_length)
+        if scale:
+            train_data, val_data, test_data = self._scaler.fit_transform(train_data.reshape(-1, 1)), self._scaler.fit_transform(val_data.reshape(-1, 1)), self._scaler.fit_transform(test_data.reshape(-1, 1))
         X_train, y_train = self._sequence_splitter.split_sequences(train_data, seq_length)
         X_train = self.reshape_feature_vector(n_features, X_train)        
 

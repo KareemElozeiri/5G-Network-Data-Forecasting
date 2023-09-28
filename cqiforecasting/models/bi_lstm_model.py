@@ -8,14 +8,13 @@ from keras.optimizers import Adam
 class BiLSTMModel(BaseNN):
 
     def __init__(self, input_seq_length, cfg, n_features=1, name="BiLSTM"):
-        super().__init__(cfg)
+        super().__init__(input_seq_length, cfg, n_features)
         
         self.name = name
 
         self._description = "Double layer LSTM neural net"
 
-        self._seq_length = input_seq_length
-        self._n_features = n_features
+   
 
         self._LSTM1_units = 25
         self._LSTM2_units = 25
@@ -31,5 +30,5 @@ class BiLSTMModel(BaseNN):
     def compile(self):
         loss = MeanSquaredError()
         optimizer = Adam()
-        self._model.compile(loss=loss, optimizer=optimizer, metrics=["mae"])
+        self._model.compile(loss=loss, optimizer=optimizer)
 

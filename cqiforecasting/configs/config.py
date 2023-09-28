@@ -11,7 +11,7 @@ data_dir = os.path.join(current_dir, '../../data/')
 export_dir  = os.path.join(current_dir, '../output/exported_models')
 CFGLog = {
     "data": {
-        "path": os.path.join(data_dir,"ue-lte-network-traffic-stats.csv"),
+        "path": os.path.join(data_dir,"UE1-CQI/UE1-CQI_1.csv"),
         "train_size":0.7,
         "validation_size":0.15,
         "test_size":0.15,

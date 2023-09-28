@@ -8,7 +8,7 @@ from keras.optimizers import Adam
 class ConvBiLSTMModel(BaseNN):
 
     def __init__(self, input_seq_length, cfg, n_features=1, name="ConvBiLSTM"):
-        super().__init__(cfg)
+        super().__init__(input_seq_length, cfg, n_features)
 
         self.name = name
 
