@@ -26,9 +26,9 @@ class BaseNN(ABC):
     def compile(self):
         pass
 
-    def train(self, batch_size, epochs):
+    def train(self, batch_size, epochs, verbose=True):
         self.compile()
-        history = self._model.fit(self.X_train, self.y_train, batch_size=batch_size, epochs=epochs, validation_data=(self.X_val, self.y_val))
+        history = self._model.fit(self.X_train, self.y_train, batch_size=batch_size, epochs=epochs, validation_data=(self.X_val, self.y_val), verbose=verbose)
 
         return history
     
