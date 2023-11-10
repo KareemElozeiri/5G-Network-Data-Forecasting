@@ -7,7 +7,7 @@ from cqiforecasting.dataloader.nn_data_loader  import NNDataLoader
 class BaseNN(ABC):
     """Abstract Model class that is inherited to all models"""
 
-    def __init__(self, input_seq_length, cfg, n_features=1):
+    def __init__(self, input_seq_length, cfg, n_features=1)->None:
         self._model = None 
         self.eval = None 
         self.config = Config.from_json(cfg)
